@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title> 
+  <!-- <script type="module" src="./elasticQL/elasticQL.js"></script> -->
+  <script type="module">
+    import ElasticQL  from './elasticQL/elasticQL.js';
+    const elasticManager = await new ElasticQL('https://api.example.com/data', 'sql');
+    //const currentManager = await dataManager.getManager();
+    /*elasticManager.query({
+      schema: 'usuarios',
+      fields: ['id', 'nombre', 'email'],
+      filters: { edad: { gt: 18 }, nombre: { like: '%Juan%' } }
+    })*/
+    elasticManager.create({
+      schema: 'usuarios',
+      fields: {nombre: 'Juan', email: 'juan@email.com'},
+      //values: ['Juan', 'juan@email.com'],
+      //filters: { edad: { gt: 18 }, nombre: { like: '%Juan%' } }
+    })
+    .then(result => console.log(result))
+    .catch(error => console.error(error));
+    /*const dataManager = new Promise((resolve, reject) => {
+      resolve(new DataManager('https://api.example.com/data', 'sql'));
+      reject('Error');
+    });*/
+    /*const currentManager = new Promise((resolve, reject) => {
+      resolve(dataManager.getManager());
+      reject('Error');
+    });
+    currentManager.then((value) => {
+      console.log(value);
+    }).catch((error) => {
+      console.log(error);
+    });*/    
+  </script>
+</head>
+<body>
+  
+</body>
+</html>

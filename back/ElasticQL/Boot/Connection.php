@@ -7,14 +7,20 @@ use \PDO;
 // PDO connection manager
 class Connection extends DBoot {
     private ?PDO $connection = null;
-    private ?string $host = null;
+    /* private ?string $host = null;
     private ?string $user = null;
     private ?string $password = null;
     private ?string $database = null;
-    private ?string $charset = null;
+    private ?string $charset = null; */
 
-    public function __construct() {
-        parent::__construct('local', 'mysql');
+    public function __construct(
+        private ?string $host = null,
+        private ?string $user = null,
+        private ?string $password = null,
+        private ?string $database = null,
+        private ?string $charset = null
+    ) {
+        parent::__construct(); //'local', 'mysql'
     }
 
     public function getConn() {
